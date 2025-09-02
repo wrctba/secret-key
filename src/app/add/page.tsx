@@ -1,10 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 
-export interface UploadProp {
-  onUploadSuccess?: () => void;
-}
-export default function Upload({ onUploadSuccess }: UploadProp) {
+export default function Upload() {
   const [markdownFile, setMarkdownFile] = useState<File | null>(null);
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [result, setResult] = useState<string>("");
@@ -45,7 +42,9 @@ export default function Upload({ onUploadSuccess }: UploadProp) {
     });
     if (res.ok) {
       setResult("Upload successful");
-      onUploadSuccess?.();
+      setImageFiles([]);
+      setMarkdownFile(null);
+      setKey("");
     } else {
       setResult("Upload failed");
     }

@@ -9,6 +9,11 @@ export default function Home() {
   const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const handleClear = () => {
+    setContent(null);
+    setKey("");
+  };
+
   const handleSubmit = async () => {
     setContent(null);
     setNotFound(false);
@@ -25,29 +30,41 @@ export default function Home() {
     }
   };
 
-
   return (
-    <main className="flex flex-col items-center justify-center h-screen gap-4 p-4">
-      <input
-        disabled={loading}
-        type="text"
-        value={key}
-        onChange={(e) => setKey(e.target.value)}
-        placeholder="insert a key or phrase"
-        className="border rounded p-2 w-80 text-center"
-      />
-      <button
-        disabled={loading}
-        onClick={handleSubmit}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
-        Send
-      </button>
-      { loading && <p>Loading...</p> }
+    <main
+      className={`flex flex-col items-center h-screen gap-4 p-4 ${
+        !content ? "justify-center" : ""
+      }`}
+    >
+      <div className="flex gap-4">
+        <input
+          disabled={loading}
+          type="text"
+          value={key}
+          onChange={(e) => setKey(e.target.value)}
+          placeholder="insert a key or phrase"
+          className="border rounded p-2 w-80 text-center"
+        />
+        <button
+          disabled={loading}
+          onClick={handleSubmit}
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Send
+        </button>
+        {content && (
+          <button
+            onClick={handleClear}
+            className="bg-red-500 text-white px-4 py-2 rounded"
+          >
+            Reset
+          </button>
+        )}
+      </div>
+      {loading && <p>Loading...</p>}
 
       {content && <ReactMarkdown>{content}</ReactMarkdown>}
       {notFound && <p>Not Found</p>}
-      
     </main>
   );
 }
