@@ -1,0 +1,35 @@
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #0a0a1a;
+  color: #00ff41;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #00ff41;
+  box-shadow: 0 0 15px #00ff41;
+}
+.title {
+  text-align: center;
+  text-shadow: 0 0 5px #00ff41;
+}
+.paragraph {
+  line-height: 1.6;
+}
+.quote {
+  border-left: 3px solid #00ff41;
+  padding-left: 15px;
+  margin: 20px;
+  font-style: italic;
+  color: #aaffc3;
+}
+.task {
+  background-color: #1a1a3a;
+  padding: 15px;
+  border: 1px dashed #00ff41;
+}
+.code {
+  color: #ffffff;
+  background-color: #333;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
